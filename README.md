@@ -16,7 +16,7 @@
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/gitgen.git
+git clone https://github.com/yourusername/GitGen.git
 cd GitGen
 ```
 
