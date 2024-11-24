@@ -17,7 +17,7 @@
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/yourusername/gitgen.git
-cd gitgen
+cd GitGen
 ```
 
 ### 2️⃣ Run the Script
