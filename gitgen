@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Prompt the user for their email
+read -p "Enter your GitHub email: " email
+
+# Generate the SSH key
+ssh-keygen -t ed25519 -C "$email" -f ~/.ssh/id_ed25519 -N ""
+
+# Start the SSH agent and add the SSH key
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy the public key to clipboard (requires xclip to be installed)
+if command -v xclip &> /dev/null; then
+    xclip -selection clipboard < ~/.ssh/id_ed25519.pub
+    echo "✅ Your public SSH key has been copied to the clipboard."
+else
+    echo "⚠️ xclip is not installed. Please manually copy the public key below:"
+    cat ~/.ssh/id_ed25519.pub
+fi
+
+# Print the link to GitHub SSH settings
+echo -e "\n🔗 Add your SSH key to GitHub by visiting this link:"
+echo "https://github.com/settings/keys"
+
+# Inform the user to paste the key
+echo -e "\n📋 Paste the copied public key into GitHub and click 'Add SSH Key'."
+
+echo -e "\n🎉 All done! Your SSH key is ready for use."
